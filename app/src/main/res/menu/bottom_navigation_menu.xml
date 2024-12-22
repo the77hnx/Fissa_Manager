@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="الرئيسية"
+        app:itemIconTint="@color/navigation_color_selector"
+        app:itemTextColor="@color/navigation_color_unselected"/>
+    <item
+        android:id="@+id/navigation_following"
+        android:icon="@drawable/shopping_basket"
+        android:title="منتجاتي"
+        app:itemIconTint="@color/navigation_color_selector"
+        app:itemTextColor="@color/navigation_color_unselected"/>
+
+    <item
+        android:id="@+id/navigation_basket"
+        android:icon="@drawable/clipboard"
+        android:title="طلبياتي"
+        app:itemIconTint="@color/navigation_color_selector"
+        app:itemTextColor="@color/navigation_color_unselected"/>
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/restaurant"
+        android:title="الملف الشخصي"
+        app:itemIconTint="@color/navigation_color_selector"
+        app:itemTextColor="@color/navigation_color_unselected"/>
+
+</menu>

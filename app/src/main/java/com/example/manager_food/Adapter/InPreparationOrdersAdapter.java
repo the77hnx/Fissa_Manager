@@ -1,0 +1,105 @@
+package com.example.manager_food.Adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.manager_food.R;
+import com.example.manager_food.model.OrderItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class InPreparationOrdersAdapter extends RecyclerView.Adapter<InPreparationOrdersAdapter.InPreparationOrderViewHolder> {
+
+    private final Context context;
+    private List<OrderItem> orderList;
+    private final OnOrderClickListener onOrderClickListener;
+
+    private static final String IN_PREPARATION_STATUS = "InPreparation";
+    private static final int IN_PREPARATION_STATUS_ID = 2;
+
+    public InPreparationOrdersAdapter(Context context, List<OrderItem> orderList, OnOrderClickListener onOrderClickListener) {
+        this.context = context;
+        this.orderList = orderList;
+        this.onOrderClickListener = onOrderClickListener;
+    }
+
+    @NonNull
+    @Override
+    public InPreparationOrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.frag_cancelled_order, parent, false);
+        return new InPreparationOrderViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull InPreparationOrderViewHolder holder, int position) {
+        OrderItem order = orderList.get(position);
+        holder.bind(order);
+        holder.itemView.setOnClickListener(v -> onOrderClickListener.onOrderClick(order));
+    }
+
+    @Override
+    public int getItemCount() {
+        return orderList != null ? orderList.size() : 0;
+    }
+
+    // Method to update the list of orders and refresh the RecyclerView
+    public void updateOrderList(List<OrderItem> newOrderList) {
+        // Create a temporary list to store filtered orders
+        List<OrderItem> filteredOrders = new ArrayList<>();
+        for (OrderItem order : newOrderList) {
+            if (IN_PREPARATION_STATUS.equals(order.getOrderStatus()) || order.getIdStatutCommande() == IN_PREPARATION_STATUS_ID) {
+                filteredOrders.add(order);
+            }
+        }
+        // Replace the current orderList with the filtered list
+        orderList.clear();
+        orderList.addAll(filteredOrders);
+        notifyDataSetChanged();
+    }
+
+    public interface OnOrderClickListener {
+        void onOrderClick(OrderItem order);
+    }
+
+    static class InPreparationOrderViewHolder extends RecyclerView.ViewHolder {
+        private final TextView customerName;
+        private final TextView orderDate;
+        private final TextView orderId;
+        private final TextView orderTotal;
+        private final TextView orderMessage;
+        private final TextView orderStatus;
+        private final RecyclerView itemsRecyclerView;
+
+        public InPreparationOrderViewHolder(View itemView) {
+            super(itemView);
+            customerName = itemView.findViewById(R.id.customer_name_cancelled_order);
+            orderDate = itemView.findViewById(R.id.order_date_cancelled_order);
+            orderId = itemView.findViewById(R.id.order_id_cancelled_order);
+            orderStatus = itemView.findViewById(R.id.order_Status_tv_cancelled_oder);
+            orderTotal = itemView.findViewById(R.id.order_total_cancelled_order);
+            orderMessage = itemView.findViewById(R.id.order_message_cancelled_order);
+            itemsRecyclerView = itemView.findViewById(R.id.recycler_view_cancelled_items);
+        }
+
+        public void bind(OrderItem order) {
+            customerName.setText("اسم الزبون : " + order.getCustomerName());
+            orderDate.setText("تاريخ الطلب : " + order.getOrderDate());
+            orderId.setText("ايدي الطلب : " + order.getOrderId());
+            orderTotal.setText("السعر الاجمالي : " + order.getOrderTotal() + " دج");
+            orderMessage.setText(order.getOrderMessage());
+            orderStatus.setText("حالة الطلب : " + order.getOrderStatus());
+
+            OrderItemsAdapter itemsAdapter = new OrderItemsAdapter(order.getItems());
+            itemsRecyclerView.setAdapter(itemsAdapter);
+            itemsRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
+        }
+    }
+}

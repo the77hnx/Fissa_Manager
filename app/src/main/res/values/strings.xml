@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Fissa Manager</string>
+    <string name="basket">Basket</string>
+    <string name="home">Home</string>
+    <string name="following">Following</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_our_orders">OurOrdersActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="choose_state">اختيار بلدية</string>
+    <string name="choose_city">اختيار حي</string>
+    <string name="add_area">إضافة منطقة</string>
+    <string name="save_changes">حفظ التغييرات</string>
+    <string name="delivery_area_list">Delivery Area List</string>
+
+    <!-- Define states array -->
+    <string-array name="states_array">
+        <item>بلدية 1</item>
+        <item>بلدية 2</item>
+        <item>بلدية 3</item>
+        <!-- Add more states as needed -->
+    </string-array>
+
+    <!-- Define cities array -->
+    <string-array name="cities_array">
+        <item>حي 1</item>
+        <item>حي 2</item>
+        <item>حي 3</item>
+        <!-- Add more cities as needed -->
+    </string-array>
+</resources>

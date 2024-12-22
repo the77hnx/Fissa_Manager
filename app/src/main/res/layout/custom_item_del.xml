@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:layoutDirection="rtl"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageView"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/black"
+                android:scaleType="fitXY"
+                android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedimageview" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- ImageView for the item image -->
+
+        <!-- Vertical LinearLayout for the item details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <!-- Item name -->
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اسم الزبون"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hacen_beirut_bight"
+                android:paddingRight="5dp"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <!-- Item description -->
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hacen_beirut_bight"
+                android:text="وصف الطلبية"
+                android:textSize="14sp" />
+
+            <!-- Toggle Buttons -->
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+
+            <TextView
+                android:id="@+id/off_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="حالة الطلب"
+                android:fontFamily="@font/hacen_beirut_bight"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:padding="4dp" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/on_button"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@drawable/on_background"-->
+            <!--                android:text="ON"-->
+            <!--                android:textColor="@android:color/white"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:layout_marginStart="4dp" />-->
+
+
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3800 دج"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:fontFamily="@font/hacen_beirut_bight"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+        <!-- TextView for the price -->
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
